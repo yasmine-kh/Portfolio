@@ -46,7 +46,7 @@ No server needed — just open the file:
 
 ```bash
 # Clone the repo
-git clone https://github.com/yasmine-kh/yasmine-kh.github.io.git
+git clone https://github.com/yasmine-kh/Portfolio.git
 
 # Open in browser
 open index.html
