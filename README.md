@@ -5,7 +5,7 @@
 
 A clean, responsive developer portfolio built with vanilla HTML, CSS, and JavaScript. No frameworks, no dependencies — just fast, lightweight code.
 
-**Live site:** `https://yasmine-kh.github.io` 
+**Live site:** `https://yasmine-kh.github.io/Portfolio/` 
 
 ---
 
