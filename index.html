@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khelil Yasmine — Portfolio</title>
+
+  <!-- =====================================================
+       FONTS
+       DM Sans: clean modern body font
+       Playfair Display: editorial display font for headings
+       ===================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- =====================================================
+       CURSOR GLOW — follows mouse, accent-colored orb
+       Shown/hidden via JS. See script.js → initCursorGlow()
+       ===================================================== -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- =====================================================
+       NAVIGATION BAR
+       - Logo / name on the left
+       - Pill-style nav links on the right
+       - Hamburger menu for mobile (toggled in JS)
+       ===================================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+
+      <!-- Logo: initials badge -->
+      <a href="#hero" class="nav-logo">
+        <span class="nav-logo-text">♥</span>
+      </a>
+
+      <!-- Desktop navigation links -->
+      <!-- To rename a nav item: change the text inside the <a> tag -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about"     class="nav-link">About</a></li>
+        <li><a href="#skills"    class="nav-link">Skills</a></li>
+        <li><a href="#projects"  class="nav-link">Projects</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#contact"   class="nav-link nav-link-cta">Contact</a></li>
+      </ul>
+
+      <!-- Hamburger button (mobile only) -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- =====================================================
+       MOBILE MENU OVERLAY
+       Full-screen overlay that slides in on mobile
+       ===================================================== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-links">
+      <li><a href="#about"     class="mobile-nav-link" onclick="closeMobileMenu()">About</a></li>
+      <li><a href="#skills"    class="mobile-nav-link" onclick="closeMobileMenu()">Skills</a></li>
+      <li><a href="#projects"  class="mobile-nav-link" onclick="closeMobileMenu()">Projects</a></li>
+      <li><a href="#education" class="mobile-nav-link" onclick="closeMobileMenu()">Education</a></li>
+      <li><a href="#contact"   class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a></li>
+    </ul>
+  </div>
+
+
+  <!-- =====================================================
+       SECTION 1: HERO
+       Full-viewport opening section.
+       Layout: centered text + two CTA buttons
+       Animation: fadeUp (controlled by --anim-speed in CSS)
+       ===================================================== -->
+  <section class="hero" id="hero">
+
+    <!-- Decorative background grid lines -->
+    <div class="hero-grid-lines" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="hero-content">
+
+      <!-- Eyebrow label above name -->
+      <p class="hero-eyebrow reveal-fadeUp" style="--delay: 0ms">
+        Hello, world! 
+      </p>
+
+      <!-- Main name heading -->
+      <!-- To change: update the text and the <em> wraps the accented part -->
+      <h1 class="hero-name reveal-fadeUp" style="--delay: 100ms">
+        Khelil <em>Yasmine</em>
+      </h1>
+
+      <!-- Professional title -->
+      <p class="hero-title reveal-fadeUp" style="--delay: 200ms">
+        Computer Engineering Student 
+      </p>
+
+      <!-- Tagline: displayed in accent color -->
+      <p class="hero-tagline reveal-fadeUp" style="--delay: 300ms">
+        Turning ideas into code — one project at a time.
+      </p>
+
+      <!-- Greeting / intro text -->
+      <p class="hero-greeting reveal-fadeUp" style="--delay: 400ms">
+        Hiii! I'm a passionate engineering student building my way through the tech world.
+      </p>
+
+      <!-- CTA Buttons -->
+      <!-- To rename: change the text inside each <a> tag -->
+      <div class="hero-actions reveal-fadeUp" style="--delay: 500ms">
+        <a href="#projects" class="btn btn-primary">View My Projects</a>
+        <a href="#contact"  class="btn btn-outline">Get In Touch</a>
+      </div>
+
+    </div>
+
+    <!-- Scroll indicator arrow at bottom of hero -->
+    <!-- To hide: add class "hidden" or set display:none in CSS -->
+    <div class="scroll-indicator" id="scrollIndicator">
+      <span class="scroll-text">scroll</span>
+      <div class="scroll-arrow">
+        <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+          <path d="M8 0v20M1 13l7 8 7-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       SECTION 2: ABOUT ME
+       Two-column layout: text left, decorative card right
+       ===================================================== -->
+  <section class="section about-section" id="about">
+    <div class="container">
+
+      <!-- Section heading with line decoration -->
+      <div class="section-header reveal-fadeUp">
+        <span class="section-label">01 / About</span>
+        <h2 class="section-title">A bit about me</h2>
+      </div>
+
+      <div class="about-grid">
+
+        <!-- About text paragraphs -->
+        <!-- To add a paragraph: copy a <p class="about-para reveal-fadeUp"> block -->
+        <div class="about-text">
+          <p class="about-para reveal-fadeUp" style="--delay: 0ms">
+            I'm a third-year computer engineering student at EHEIO, Morocco, pursuing my State
+            Engineer diploma in Computer Science. My journey into tech started with a foundation
+            in preparatory sciences and grew into a full-blown passion for software development
+            and digital innovation.
+          </p>
+          <p class="about-para reveal-fadeUp" style="--delay: 80ms">
+            I thrive on solving complex problems and building things that work. Whether it's
+            designing a database schema, crafting a responsive UI, or integrating third-party
+            APIs, I bring curiosity and analytical thinking to every challenge. I'm currently
+            seeking an internship to bridge my academic knowledge with real-world professional
+            experience.
+          </p>
+          <p class="about-para reveal-fadeUp" style="--delay: 160ms">
+            When I'm not coding, I'm exploring new technologies, sharpening my skills, and
+            working for new certifications.
+          </p>
+
+          <!-- Quick facts row -->
+          <div class="about-facts reveal-fadeUp" style="--delay: 240ms">
+            <div class="about-fact">
+              <span class="fact-value">3rd</span>
+              <span class="fact-label">Year student</span>
+            </div>
+            <div class="about-fact">
+              <span class="fact-value">3</span>
+              <span class="fact-label">Live projects</span>
+            </div>
+            <div class="about-fact">
+              <span class="fact-value">5+</span>
+              <span class="fact-label">Languages known</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decorative card — languages + location badge -->
+        <div class="about-card reveal-fadeUp" style="--delay: 200ms">
+          <div class="about-card-inner">
+            <div class="about-card-avatar">YK</div>
+            <p class="about-card-name">Yasmine Khelil</p>
+            <p class="about-card-role">CS Engineering Student</p>
+            <div class="about-card-divider"></div>
+            <div class="about-card-langs">
+              <span class="lang-badge"> Arabic</span>
+              <span class="lang-badge"> French</span>
+              <span class="lang-badge"> English</span>
+            </div>
+            <p class="about-card-location">📍 Oujda, Morocco</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       SECTION 3: SKILLS
+       Tag cloud layout, grouped by category
+       Animation: stagger (each tag fades in with delay)
+       ===================================================== -->
+  <section class="section skills-section" id="skills">
+    <div class="container">
+
+      <div class="section-header reveal-fadeUp">
+        <span class="section-label">02 / Skills</span>
+        <h2 class="section-title">What I work with</h2>
+      </div>
+
+      <!-- Skills grid: each category is a card -->
+      <!-- To add a category: copy a .skill-category block -->
+      <div class="skills-grid">
+
+        <!-- Category: Languages -->
+        <div class="skill-category reveal-fadeUp" style="--delay: 0ms">
+          <h3 class="skill-cat-title">Languages</h3>
+          <div class="skill-tags">
+            <!-- To add a skill tag: copy a <span class="skill-tag"> -->
+            <span class="skill-tag stagger-tag">C</span>
+            <span class="skill-tag stagger-tag">C++</span>
+            <span class="skill-tag stagger-tag">Java</span>
+            <span class="skill-tag stagger-tag">Python</span>
+            <span class="skill-tag stagger-tag">PHP</span>
+            <span class="skill-tag stagger-tag">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Category: Web -->
+        <div class="skill-category reveal-fadeUp" style="--delay: 80ms">
+          <h3 class="skill-cat-title">Web</h3>
+          <div class="skill-tags">
+            <span class="skill-tag stagger-tag">HTML5</span>
+            <span class="skill-tag stagger-tag">CSS3</span>
+            <span class="skill-tag stagger-tag">Responsive Design</span>
+          </div>
+        </div>
+
+        <!-- Category: Tools & DB -->
+        <div class="skill-category reveal-fadeUp" style="--delay: 160ms">
+          <h3 class="skill-cat-title">Tools &amp; DB</h3>
+          <div class="skill-tags">
+            <span class="skill-tag stagger-tag">Git</span>
+            <span class="skill-tag stagger-tag">GitHub</span>
+            <span class="skill-tag stagger-tag">MySQL</span>
+            <span class="skill-tag stagger-tag">Linux</span>
+          </div>
+        </div>
+
+        <!-- Category: Concepts -->
+        <div class="skill-category reveal-fadeUp" style="--delay: 240ms">
+          <h3 class="skill-cat-title">Concepts</h3>
+          <div class="skill-tags">
+            <span class="skill-tag stagger-tag">Data Structures</span>
+            <span class="skill-tag stagger-tag">Algorithms</span>
+            <span class="skill-tag stagger-tag">OOP</span>
+            <span class="skill-tag stagger-tag">REST API</span>
+          </div>
+        </div>
+
+        <!-- Category: Soft Skills -->
+        <div class="skill-category skill-category--wide reveal-fadeUp" style="--delay: 320ms">
+          <h3 class="skill-cat-title">Soft Skills</h3>
+          <div class="skill-tags">
+            <span class="skill-tag skill-tag--soft stagger-tag">Teamwork</span>
+            <span class="skill-tag skill-tag--soft stagger-tag">Analytical thinking</span>
+            <span class="skill-tag skill-tag--soft stagger-tag">Adaptability</span>
+            <span class="skill-tag skill-tag--soft stagger-tag">Fast learner</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       SECTION 4: PROJECTS
+       Card grid with image preview, stack tags, repo link
+       Animation: slideIn from left
+       Hover: glow border effect
+       ===================================================== -->
+  <section class="section projects-section" id="projects">
+    <div class="container">
+
+      <div class="section-header reveal-fadeUp">
+        <span class="section-label">03 / Projects</span>
+        <h2 class="section-title">Things I've built</h2>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- -----------------------------------------------
+             PROJECT CARD 1: Sports & Tourism Platform
+             To duplicate: copy the entire .project-card div
+             To add image: put file in images/ folder and
+             update src="images/YOUR-FILE.png"
+             ----------------------------------------------- -->
+        <article class="project-card reveal-slideIn" style="--delay: 0ms">
+
+          <!-- Project image area -->
+          <!-- Replace src with your actual screenshot path -->
+          <div class="project-image-wrap">
+            <img
+              src="images/project-sports-platform.png"
+              alt="Sports & Tourism Platform screenshot"
+              class="project-image"
+              onerror="this.parentElement.classList.add('project-image-placeholder')"
+            />
+            <!-- Overlay shown on hover -->
+            <div class="project-image-overlay">
+              <a href="https://github.com/yasmine-kh" target="_blank" rel="noopener" class="project-overlay-btn">
+                View Repo ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="project-body">
+
+            <!-- Project period badge -->
+            <span class="project-period">Nov 2025 – May 2026</span>
+
+            <!-- Project name -->
+            <h3 class="project-name">Sports &amp; Tourism Platform</h3>
+
+            <!-- Description -->
+            <p class="project-desc">
+              A web platform combining sports event management and tourism discovery for Morocco.
+              Features match management, ticketing, accommodations, activities, quiz modules and admin dashboard.
+            </p>
+
+            <!-- Tech stack tags -->
+            <!-- To add a tag: copy a <span class="stack-tag"> line -->
+            <div class="project-stack">
+              <span class="stack-tag">HTML5</span>
+              <span class="stack-tag">CSS3</span>
+              <span class="stack-tag">JavaScript</span>
+              <span class="stack-tag">PHP</span>
+              <span class="stack-tag">Java</span>
+              <span class="stack-tag">MySQL</span>
+              <span class="stack-tag">Google Maps API</span>
+            </div>
+
+            <!-- Action buttons row -->
+            <div class="project-actions">
+              <a href="https://github.com/yasmine-kh" target="_blank" rel="noopener" class="project-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z"/>
+                </svg>
+                GitHub Repo
+              </a>
+            </div>
+
+          </div>
+        </article>
+
+
+        <!-- -----------------------------------------------
+             PROJECT CARD 2: Interactive Weather App
+             ----------------------------------------------- -->
+        <article class="project-card reveal-slideIn" style="--delay: 80ms">
+
+          <div class="project-image-wrap">
+            <img
+              src="meteo.png"
+              alt="Interactive Weather App screenshot"
+              class="project-image"
+              onerror="this.parentElement.classList.add('project-image-placeholder')"
+            />
+            <div class="project-image-overlay">
+              <a href="https://github.com/yasmine-kh/weather-app" target="_blank" rel="noopener" class="project-overlay-btn">
+                View Repo ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <span class="project-period">Feb 2026</span>
+            <h3 class="project-name">Interactive Weather App</h3>
+            <p class="project-desc">
+              A responsive web app displaying real-time weather forecasts via OpenWeather API
+              integration, with clean and adaptive UI.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">HTML5</span>
+              <span class="stack-tag">CSS3</span>
+              <span class="stack-tag">JavaScript</span>
+              <span class="stack-tag">OpenWeather API</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/yasmine-kh" target="_blank" rel="noopener" class="project-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z"/>
+                </svg>
+                GitHub Repo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- -----------------------------------------------
+             ADD MORE PROJECTS HERE
+             Copy any .project-card block above and paste it
+             after this comment. Update all fields accordingly.
+             ----------------------------------------------- -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       SECTION 5: EDUCATION & CERTIFICATIONS
+       Card list with optional image and verification link
+       ===================================================== -->
+  <section class="section education-section" id="education">
+    <div class="container">
+
+      <div class="section-header reveal-fadeUp">
+        <span class="section-label">04 / Education</span>
+        <h2 class="section-title">Background &amp; credentials</h2>
+      </div>
+
+      <div class="edu-grid">
+
+        <!-- -----------------------------------------------
+             EDUCATION CARD 1
+             To add image: put file in images/ and set src
+             To add link: update href in .edu-link-btn
+             ----------------------------------------------- -->
+        <div class="edu-card reveal-fadeUp" style="--delay: 0ms">
+
+          <!-- Image area — shows placeholder icon if no image -->
+          <div class="edu-image-wrap edu-type-education">
+            <img
+              src="images/ehei-logo.png"
+              alt="EHEI logo"
+              class="edu-image"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+            />
+            <!-- Fallback icon shown when image is missing -->
+            <div class="edu-icon-fallback" style="display:none">🎓</div>
+          </div>
+
+          <div class="edu-body">
+            <div class="edu-meta">
+              <span class="edu-type-badge edu-type-badge--education">Education</span>
+              <span class="edu-year">2023 – 2028</span>
+            </div>
+            <h3 class="edu-degree">State Engineer Diploma — Computer Engineering</h3>
+            <p class="edu-school">École des Hautes Études d'Ingénierie (EHEI)</p>
+            <p class="edu-location">📍 Oujda, Morocco</p>
+            <p class="edu-note">5-year cycle: 2 years prep + 3 years engineering</p>
+
+            <!-- Verification / school link — update href when available -->
+            <!-- To hide: remove or comment out this <a> tag -->
+            <!-- <a href="https://ehei.ma" target="_blank" rel="noopener" class="edu-link-btn">
+              Visit Institution ↗
+            </a> -->
+          </div>
+
+        </div>
+
+
+        <!-- -----------------------------------------------
+             EDUCATION CARD 2
+             ----------------------------------------------- -->
+        <div class="edu-card reveal-fadeUp" style="--delay: 80ms">
+
+          <div class="edu-image-wrap edu-type-education">
+            <img
+              src="images/maataoui-logo.png"
+              alt="Groupe Scolaire Maataoui logo"
+              class="edu-image"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+            />
+            <div class="edu-icon-fallback" style="display:none">🎓</div>
+          </div>
+
+          <div class="edu-body">
+            <div class="edu-meta">
+              <span class="edu-type-badge edu-type-badge--education">Education</span>
+              <span class="edu-year">2022 – 2023</span>
+            </div>
+            <h3 class="edu-degree">Baccalaureate — Physical Sciences</h3>
+            <p class="edu-school">Groupe Scolaire Maataoui</p>
+            <p class="edu-location">📍 Guercif, Morocco</p>
+          </div>
+
+        </div>
+
+
+        <!-- -----------------------------------------------
+             CERTIFICATION CARD TEMPLATE
+             Copy this block to add a new certification.
+             Replace all placeholder values.
+             ----------------------------------------------- -->
+        
+        <div class="edu-card reveal-fadeUp" style="--delay: 160ms">
+          <div class="edu-image-wrap edu-type-certification">
+            <img
+              src="vc-meta.png"
+              alt="Certificate image"
+              class="edu-image"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+            />
+            <div class="edu-icon-fallback" style="display:none">🏅</div>
+          </div>
+          <div class="edu-body">
+            <div class="edu-meta">
+              <span class="edu-type-badge edu-type-badge--certification">Certification</span>
+              <span class="edu-year">Mar 2026</span>
+            </div>
+            <h3 class="edu-degree">Version Control</h3>
+            <p class="edu-school">Coursera-Meta</p>
+            <a href="https://www.coursera.org/account/accomplishments/records/LOSRU04Y3JCP" target="_blank" rel="noopener" class="edu-link-btn">
+              Verify Certificate ↗
+            </a>
+          </div>
+        </div>
+        
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       SECTION 6: CONTACT
+       Centered CTA section + contact info cards
+       ===================================================== -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+
+      <div class="section-header reveal-fadeUp">
+        <span class="section-label">05 / Contact</span>
+        <h2 class="section-title">Let's connect</h2>
+      </div>
+
+      <!-- Tagline -->
+      <p class="contact-msg reveal-fadeUp" style="--delay: 80ms">
+        Currently seeking internship opportunities. Hope you had fun getting to know me!
+      </p>
+
+      <!-- Contact cards grid -->
+      <div class="contact-grid reveal-fadeUp" style="--delay: 160ms">
+
+        <!-- Email card -->
+        <a href="mailto:yvsminj@gmail.com" class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m2 7 10 6 10-6"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-card-label">Email</p>
+            <p class="contact-card-value">yvsminj@gmail.com</p>
+          </div>
+        </a>
+
+        <!-- LinkedIn card -->
+        <a href="https://www.linkedin.com/in/yasmine-k-8529b23b6" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-card-label">LinkedIn</p>
+            <p class="contact-card-value">yasmine-khelil</p>
+          </div>
+        </a>
+
+        <!-- GitHub card -->
+        <a href="https://github.com/yasmine-kh" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-card-label">GitHub</p>
+            <p class="contact-card-value">yasmine-kh</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">
+        Made with ♥ by <strong>Jasmin</strong> — Morocco 
+      </p>
+      <p class="footer-sub">Hope you enjoyed learning about me!</p>
+    </div>
+  </footer>
+
+
+  <!-- Load the JavaScript file last for performance -->
+  <script src="script.js"></script>
+
+</body>
+</html>
